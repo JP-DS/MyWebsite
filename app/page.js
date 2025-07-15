@@ -53,7 +53,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Hi, I'm Jiaran 👋
+            Hi, I&apos;m Jiaran 👋
           </motion.h1>
 
           <motion.p
@@ -62,7 +62,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Master's graduate in Data Science from NYU with expertise in credit risk modeling, 
+            Master&apos;s graduate in Data Science from NYU with expertise in credit risk modeling, 
             customer segmentation, and automated workflows from data to dashboard.
           </motion.p>
 
@@ -109,7 +109,7 @@ export default function Home() {
           >
             <div>
               <p className="text-lg text-slate-300 mb-6">
-                I'm a Master's graduate in Data Science from NYU with a passion for turning data into 
+                I&apos;m a Master&apos;s graduate in Data Science from NYU with a passion for turning data into 
                 strategic insights. My experience spans credit risk modeling, customer segmentation, 
                 stock price prediction, and building automated workflows from data to dashboard.
               </p>
@@ -465,9 +465,9 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <div>
-              <h3 className="text-xl font-semibold mb-6">Let's Connect</h3>
+              <h3 className="text-xl font-semibold mb-6">Let&apos;s Connect</h3>
               <p className="text-slate-300 mb-8">
-                I'm always interested in new opportunities in data science, quantitative research, 
+                I&apos;m always interested in new opportunities in data science, quantitative research, 
                 and roles where data drives strategic decision-making.
               </p>
               <div className="space-y-4">
