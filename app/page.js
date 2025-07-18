@@ -25,7 +25,7 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Jiaran
+              Jiaran (Jay)
             </motion.div>
             <div className="hidden md:flex space-x-8">
               {['home', 'about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
@@ -53,7 +53,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Hi, I&apos;m Jiaran 👋
+            Hi, I&apos;m Jiaran (Jay) 👋
           </motion.h1>
 
           <motion.p
@@ -109,7 +109,7 @@ export default function Home() {
           >
             <div className="flex flex-col items-center md:items-start">
               <img
-                src="/me.jpg"
+                src="/me.png"
                 alt="Jiaran"
                 className="w-32 h-32 rounded-full border-4 border-indigo-500 shadow-lg mb-6 object-cover"
               />
@@ -133,22 +133,25 @@ export default function Home() {
             </div>
             <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 p-8 rounded-2xl border border-white/10">
               <h3 className="text-xl font-semibold mb-4">Education</h3>
-              <div className="space-y-4 text-slate-300">
-                <div>
-                  <h4 className="font-medium">New York University</h4>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-3 text-slate-300">
+                <a href="https://www.nyu.edu/" target="_blank" rel="noopener noreferrer" className="block bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
+                  <img src="/School/nyu.png" alt="NYU Logo" className="w-12 h-12 mb-2 mx-auto" />
+                  <h4 className="font-medium text-lg mb-1">New York University</h4>
                   <p className="text-sm">MS in Data Science | GPA: 3.9/4.0</p>
                   <p className="text-sm text-slate-400">2023 - 2025</p>
-                </div>
-                <div>
-                  <h4 className="font-medium">Southern University of Science and Technology</h4>
+                </a>
+                <a href="https://www.sustech.edu.cn/en/" target="_blank" rel="noopener noreferrer" className="block bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
+                  <img src="/School/SUSTech.png" alt="SUSTech Logo" className="w-12 h-12 mb-2 mx-auto" />
+                  <h4 className="font-medium text-lg mb-1">Southern University of Science and Technology</h4>
                   <p className="text-sm">BE in Computer Science | GPA: 3.8/4.0</p>
                   <p className="text-sm text-slate-400">2019 - 2023</p>
-                </div>
-                <div>
-                  <h4 className="font-medium">University of Pennsylvania</h4>
+                </a>
+                <a href="https://www.upenn.edu/" target="_blank" rel="noopener noreferrer" className="block bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
+                  <img src="/School/UPenn.png" alt="UPenn Logo" className="w-12 h-12 mb-2 mx-auto" />
+                  <h4 className="font-medium text-lg mb-1">University of Pennsylvania</h4>
                   <p className="text-sm">Exchange Student | GPA: 3.7/4.0</p>
                   <p className="text-sm text-slate-400">2022</p>
-                </div>
+                </a>
               </div>
             </div>
           </motion.div>
@@ -368,6 +371,23 @@ export default function Home() {
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Random Forest</span>
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Feature Engineering</span>
               </div>
+            </div>
+
+            {/* Project Card 4 */}
+            <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors duration-200">
+              <div className="w-full h-48 mb-4 flex items-center justify-center">
+                <img src="/covers/quant.png" alt="Quantitative Research Intern Cover" className="object-cover w-full h-full rounded-lg" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Quantitative Research Intern</h3>
+              <p className="text-slate-300 mb-4">
+                ZADS Fund – Shenzhen, GD<br/>
+                February 2023 – April 2023
+              </p>
+              <ul className="list-disc list-inside text-slate-300 mb-4 space-y-1">
+                <li>Engineered 16 high-frequency alpha factors using market microstructure data (Level-2/order book), inspired by academic literature and proprietary research.</li>
+                <li>For each factor, calculated signal values, evaluated predictive power, and backtested performance using historical intraday data.</li>
+                <li>Built a machine learning pipeline integrating 10 low-correlation factors to predict T+1 stock returns, achieving an AUC of 0.62 on out-of-sample data.</li>
+              </ul>
             </div>
           </motion.div>
         </div>
