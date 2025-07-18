@@ -253,7 +253,7 @@ export default function Home() {
 
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <motion.h2
             className="text-3xl sm:text-4xl font-bold text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -261,103 +261,30 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Skills & Technologies
+            Skills
           </motion.h2>
           <motion.div
-            className="grid md:grid-cols-3 gap-8"
+            className="bg-white/5 p-8 rounded-xl border border-white/10 shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white/5 p-6 rounded-xl border border-white/10">
-              <h3 className="text-xl font-semibold mb-4 text-indigo-300">Programming & ML</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">Python (Scipy, Scikit-learn)</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-20 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">Pandas & NumPy</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-20 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">Machine Learning</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-18 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">Experiment Design</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-16 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-              </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Programming</h3>
+              <p className="text-slate-300">Python (NumPy, Pandas, Scikit-learn, LightGBM), SQL, R</p>
             </div>
-
-            <div className="bg-white/5 p-6 rounded-xl border border-white/10">
-              <h3 className="text-xl font-semibold mb-4 text-indigo-300">Data & Analytics</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">SQL</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-20 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">Tableau</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-18 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">PowerBI</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-16 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">Excel</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-20 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-              </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Statistics</h3>
+              <p className="text-slate-300">Regression Analysis, Hypothesis Testing, Time Series Forecasting, A/B Testing</p>
             </div>
-
-            <div className="bg-white/5 p-6 rounded-xl border border-white/10">
-              <h3 className="text-xl font-semibold mb-4 text-indigo-300">Tools & Platforms</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">AWS</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-18 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">Hadoop</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-16 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">JIRA</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-18 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-slate-300">AB Testing</span>
-                  <div className="w-24 h-2 bg-white/10 rounded-full">
-                    <div className="w-16 h-2 bg-indigo-500 rounded-full"></div>
-                  </div>
-                </div>
-              </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Machine Learning</h3>
+              <p className="text-slate-300">Classification, Regression, Clustering, PCA, Ensemble Methods, CNN, RNN</p>
+            </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Other Tools</h3>
+              <p className="text-slate-300">Hadoop, Spark, AWS, Tableau, Power BI, JIRA, Git</p>
             </div>
           </motion.div>
         </div>
