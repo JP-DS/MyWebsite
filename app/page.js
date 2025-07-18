@@ -28,7 +28,7 @@ export default function Home() {
               Jiaran
             </motion.div>
             <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'experience', 'projects', 'contact'].map((section) => (
+              {['home', 'about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -154,6 +154,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            className="text-3xl sm:text-4xl font-bold text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Skills
+          </motion.h2>
+          <motion.div
+            className="bg-white/5 p-8 rounded-xl border border-white/10 shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Programming</h3>
+              <p className="text-slate-300">Python (NumPy, Pandas, Scikit-learn, LightGBM), SQL, R</p>
+            </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Statistics</h3>
+              <p className="text-slate-300">Regression Analysis, Hypothesis Testing, Time Series Forecasting, A/B Testing</p>
+            </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Machine Learning</h3>
+              <p className="text-slate-300">Classification, Regression, Clustering, PCA, Ensemble Methods, CNN, RNN</p>
+            </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Other Tools</h3>
+              <p className="text-slate-300">Hadoop, Spark, AWS, Tableau, Power BI, JIRA, Git</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Experience Section */}
       <section id="experience" className="py-20 px-6 bg-black/20">
         <div className="max-w-6xl mx-auto">
@@ -246,45 +285,6 @@ export default function Home() {
                   Delivered insights via dashboards that boosted conversion by 20% and cut acquisition costs by 12%
                 </li>
               </ul>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            className="text-3xl sm:text-4xl font-bold text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Skills
-          </motion.h2>
-          <motion.div
-            className="bg-white/5 p-8 rounded-xl border border-white/10 shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Programming</h3>
-              <p className="text-slate-300">Python (NumPy, Pandas, Scikit-learn, LightGBM), SQL, R</p>
-            </div>
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Statistics</h3>
-              <p className="text-slate-300">Regression Analysis, Hypothesis Testing, Time Series Forecasting, A/B Testing</p>
-            </div>
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Machine Learning</h3>
-              <p className="text-slate-300">Classification, Regression, Clustering, PCA, Ensemble Methods, CNN, RNN</p>
-            </div>
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Other Tools</h3>
-              <p className="text-slate-300">Hadoop, Spark, AWS, Tableau, Power BI, JIRA, Git</p>
             </div>
           </motion.div>
         </div>
