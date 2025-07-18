@@ -107,16 +107,17 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div>
+            <div className="flex flex-col items-center md:items-start">
+              <img
+                src="/me.jpg"
+                alt="Jiaran"
+                className="w-32 h-32 rounded-full border-4 border-indigo-500 shadow-lg mb-6 object-cover"
+              />
               <p className="text-lg text-slate-300 mb-6">
-                I&apos;m a Master&apos;s graduate in Data Science from NYU with a passion for turning data into 
-                strategic insights. My experience spans credit risk modeling, customer segmentation, 
-                stock price prediction, and building automated workflows from data to dashboard.
+                Hi, I&apos;m Jiaran — a data scientist with a Master&apos;s in Data Science from NYU. I&apos;m passionate about uncovering patterns, telling stories with code, and building tools that connect data to real-world decisions. Whether I&apos;m designing predictive models, analyzing user behavior, or crafting clean, intuitive interfaces, I love solving meaningful problems at the intersection of statistics, technology, and human experience.
               </p>
               <p className="text-lg text-slate-300 mb-6">
-                Beyond the classroom, I founded a university weightlifting club and completed a 
-                4,000-mile solo road trip—showcasing leadership, grit, and curiosity that drives 
-                my approach to data science and problem-solving.
+                Outside of work, you&apos;ll find me exploring new cities, debugging side projects, planning my next solo adventure — or getting unreasonably excited about lifting a heavy weight.
               </p>
               <div className="flex flex-wrap gap-4">
                 <div className="bg-white/10 px-4 py-2 rounded-lg">
@@ -311,8 +312,8 @@ export default function Home() {
           >
             {/* Project Card 1 */}
             <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors duration-200">
-              <div className="w-full h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center">
-                <span className="text-4xl">📊</span>
+              <div className="w-full h-48 mb-4 flex items-center justify-center">
+                <img src="/covers/risk.png" alt="Probability of Default Modeling Cover" className="object-cover w-full h-full rounded-lg" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Probability of Default Modeling</h3>
               <p className="text-slate-300 mb-4">
@@ -331,8 +332,8 @@ export default function Home() {
 
             {/* Project Card 2 */}
             <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors duration-200">
-              <div className="w-full h-48 bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-lg mb-4 flex items-center justify-center">
-                <span className="text-4xl">📈</span>
+              <div className="w-full h-48 mb-4 flex items-center justify-center">
+                <img src="/covers/bond.png" alt="Bond Yield Prediction Cover" className="object-cover w-full h-full rounded-lg" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Bond Yield Prediction</h3>
               <p className="text-slate-300 mb-4">
@@ -351,8 +352,8 @@ export default function Home() {
 
             {/* Project Card 3 */}
             <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors duration-200">
-              <div className="w-full h-48 bg-gradient-to-br from-yellow-500/20 to-red-500/20 rounded-lg mb-4 flex items-center justify-center">
-                <span className="text-4xl">🏦</span>
+              <div className="w-full h-48 mb-4 flex items-center justify-center">
+                <img src="/covers/customer.png" alt="Customer Asset Prediction Cover" className="object-cover w-full h-full rounded-lg" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Customer Asset Prediction</h3>
               <p className="text-slate-300 mb-4">
