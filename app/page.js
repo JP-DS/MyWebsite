@@ -185,19 +185,19 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4">Education</h3>
               <div className="flex flex-col gap-4 text-slate-300">
                 <a href="https://www.nyu.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
-                  <img src="/School/nyu.png" alt="NYU Logo" className="w-12 h-12 mb-2 mx-auto" />
+                  <img src="/School/nyu.png" alt="NYU Logo" className="w-12 h-12 mb-2 mx-auto object-contain" />
                   <h4 className="font-medium text-lg mb-1">New York University</h4>
                   <p className="text-sm">MS in Data Science | GPA: 3.9/4.0</p>
                   <p className="text-sm text-slate-400">2023 - 2025</p>
                 </a>
                 <a href="https://www.sustech.edu.cn/en/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
-                  <img src="/School/SUSTech.png" alt="SUSTech Logo" className="w-12 h-12 mb-2 mx-auto" />
+                  <img src="/School/SUSTech.png" alt="SUSTech Logo" className="w-12 h-12 mb-2 mx-auto object-contain" />
                   <h4 className="font-medium text-lg mb-1">Southern University of Science and Technology</h4>
                   <p className="text-sm">BE in Computer Science | GPA: 3.8/4.0</p>
                   <p className="text-sm text-slate-400">2019 - 2023</p>
                 </a>
                 <a href="https://www.upenn.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
-                  <img src="/School/UPenn.png" alt="UPenn Logo" className="w-12 h-12 mb-2 mx-auto" />
+                  <img src="/School/UPenn.png" alt="UPenn Logo" className="w-12 h-12 mb-2 mx-auto object-contain" />
                   <h4 className="font-medium text-lg mb-1">University of Pennsylvania</h4>
                   <p className="text-sm">Exchange Student | GPA: 3.7/4.0</p>
                   <p className="text-sm text-slate-400">2022</p>
