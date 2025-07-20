@@ -133,7 +133,7 @@ export default function Home() {
             </div>
             <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 p-8 rounded-2xl border border-white/10">
               <h3 className="text-xl font-semibold mb-4">Education</h3>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-3 text-slate-300">
+              <div className="flex flex-row gap-4 overflow-x-auto text-slate-300 pb-2">
                 <a href="https://www.nyu.edu/" target="_blank" rel="noopener noreferrer" className="block bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
                   <img src="/School/nyu.png" alt="NYU Logo" className="w-12 h-12 mb-2 mx-auto" />
                   <h4 className="font-medium text-lg mb-1">New York University</h4>
