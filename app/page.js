@@ -133,20 +133,20 @@ export default function Home() {
             </div>
             <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 p-8 rounded-2xl border border-white/10">
               <h3 className="text-xl font-semibold mb-4">Education</h3>
-              <div className="flex flex-row gap-4 overflow-x-auto text-slate-300 pb-2">
-                <a href="https://www.nyu.edu/" target="_blank" rel="noopener noreferrer" className="block bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
+              <div className="flex flex-col gap-4 text-slate-300">
+                <a href="https://www.nyu.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
                   <img src="/School/nyu.png" alt="NYU Logo" className="w-12 h-12 mb-2 mx-auto" />
                   <h4 className="font-medium text-lg mb-1">New York University</h4>
                   <p className="text-sm">MS in Data Science | GPA: 3.9/4.0</p>
                   <p className="text-sm text-slate-400">2023 - 2025</p>
                 </a>
-                <a href="https://www.sustech.edu.cn/en/" target="_blank" rel="noopener noreferrer" className="block bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
+                <a href="https://www.sustech.edu.cn/en/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
                   <img src="/School/SUSTech.png" alt="SUSTech Logo" className="w-12 h-12 mb-2 mx-auto" />
                   <h4 className="font-medium text-lg mb-1">Southern University of Science and Technology</h4>
                   <p className="text-sm">BE in Computer Science | GPA: 3.8/4.0</p>
                   <p className="text-sm text-slate-400">2019 - 2023</p>
                 </a>
-                <a href="https://www.upenn.edu/" target="_blank" rel="noopener noreferrer" className="block bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
+                <a href="https://www.upenn.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
                   <img src="/School/UPenn.png" alt="UPenn Logo" className="w-12 h-12 mb-2 mx-auto" />
                   <h4 className="font-medium text-lg mb-1">University of Pennsylvania</h4>
                   <p className="text-sm">Exchange Student | GPA: 3.7/4.0</p>
@@ -331,6 +331,14 @@ export default function Home() {
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Ensemble Models</span>
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Financial Ratios</span>
               </div>
+              <a
+                href="https://github.com/JP-DS/Risk_Modeling"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded text-sm transition-colors duration-200 inline-block mt-2"
+              >
+                View Code
+              </a>
             </div>
 
             {/* Project Card 2 */}
@@ -351,6 +359,14 @@ export default function Home() {
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Stepwise Regression</span>
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Excel Dashboard</span>
               </div>
+              <a
+                href="https://github.com/JP-DS/Quant_Strategy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded text-sm transition-colors duration-200 inline-block mt-2"
+              >
+                View Code
+              </a>
             </div>
 
             {/* Project Card 3 */}
@@ -371,6 +387,12 @@ export default function Home() {
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Random Forest</span>
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Feature Engineering</span>
               </div>
+              <button
+                className="px-4 py-2 bg-gray-600 rounded text-sm transition-colors duration-200 inline-block mt-2 cursor-not-allowed"
+                disabled
+              >
+                Coming Soon
+              </button>
             </div>
 
             {/* Project Card 4 */}
@@ -388,6 +410,14 @@ export default function Home() {
                 <li>For each factor, calculated signal values, evaluated predictive power, and backtested performance using historical intraday data.</li>
                 <li>Built a machine learning pipeline integrating 10 low-correlation factors to predict T+1 stock returns, achieving an AUC of 0.62 on out-of-sample data.</li>
               </ul>
+              <a
+                href="https://github.com/JP-DS/Stock_alpha/tree/main"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded text-sm transition-colors duration-200 inline-block mt-2"
+              >
+                View Code
+              </a>
             </div>
           </motion.div>
         </div>
