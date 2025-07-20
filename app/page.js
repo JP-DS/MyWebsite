@@ -46,25 +46,48 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center px-6">
-        <div className="text-center max-w-4xl">
-          <motion.h1
-            className="text-4xl sm:text-6xl font-bold mb-6"
-            initial={{ opacity: 0, y: -40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Hi, I&apos;m Jiaran (Jay) 👋
-          </motion.h1>
-
-          <motion.p
-            className="text-lg sm:text-xl text-slate-300 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            Master&apos;s graduate in Data Science from NYU with expertise in credit risk modeling, 
-            customer segmentation, and automated workflows from data to dashboard.
-          </motion.p>
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-12">
+            <motion.div
+              className="flex-shrink-0"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <img
+                src="/me.png"
+                alt="Jiaran (Jay) Peng"
+                className="w-48 h-48 rounded-full object-cover border-4 border-indigo-500/20 shadow-2xl"
+              />
+            </motion.div>
+            <div className="flex-1">
+              <motion.h1
+                className="text-4xl sm:text-6xl font-bold mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                Hi, I&apos;m <span className="text-indigo-400">Jiaran (Jay)</span>
+              </motion.h1>
+              <motion.p
+                className="text-xl sm:text-2xl text-slate-300 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                Data Scientist & Quantitative Researcher
+              </motion.p>
+              <motion.p
+                className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Passionate about leveraging data to drive strategic decisions and uncover insights 
+                that transform business outcomes.
+              </motion.p>
+            </div>
+          </div>
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -78,14 +101,6 @@ export default function Home() {
             >
               View My Work
             </button>
-            <a
-              href="https://www.linkedin.com/in/jaylen-peng-92530527a/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 border border-white/20 hover:bg-white/10 rounded-lg transition-colors duration-200 text-center"
-            >
-              Connect on LinkedIn
-            </a>
           </motion.div>
           <motion.div
             className="mt-8 text-center"
@@ -100,6 +115,24 @@ export default function Home() {
               </a>
               <span className="text-slate-400">|</span>
               <span className="text-slate-300">+1(201)-423-0970</span>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+              <a
+                href="https://www.linkedin.com/in/jaylen-peng-92530527a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 border border-white/20 hover:bg-white/10 rounded-lg transition-colors duration-200 text-center"
+              >
+                Connect on LinkedIn
+              </a>
+              <a
+                href="https://github.com/JP-DS"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 border border-white/20 hover:bg-white/10 rounded-lg transition-colors duration-200 text-center"
+              >
+                View on GitHub
+              </a>
             </div>
           </motion.div>
         </div>
