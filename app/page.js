@@ -28,7 +28,7 @@ export default function Home() {
               Jiaran (Jay)
             </motion.div>
             <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
+              {['home', 'about', 'skills', 'experience', 'projects'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -78,12 +78,29 @@ export default function Home() {
             >
               View My Work
             </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="px-8 py-3 border border-white/20 hover:bg-white/10 rounded-lg transition-colors duration-200"
+            <a
+              href="https://www.linkedin.com/in/jaylen-peng-92530527a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 border border-white/20 hover:bg-white/10 rounded-lg transition-colors duration-200 text-center"
             >
-              Get In Touch
-            </button>
+              Connect on LinkedIn
+            </a>
+          </motion.div>
+          <motion.div
+            className="mt-8 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+          >
+            <p className="text-slate-300 mb-2">Get in touch:</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a href="mailto:jp7238@nyu.edu" className="text-indigo-300 hover:text-indigo-200 transition-colors duration-200">
+                jp7238@nyu.edu
+              </a>
+              <span className="text-slate-400">|</span>
+              <span className="text-slate-300">+1(201)-423-0970</span>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -418,100 +435,6 @@ export default function Home() {
               >
                 View Code
               </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            className="text-3xl sm:text-4xl font-bold text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Get In Touch
-          </motion.h2>
-          <motion.div
-            className="grid md:grid-cols-2 gap-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Let&apos;s Connect</h3>
-              <p className="text-slate-300 mb-8">
-                I&apos;m always interested in new opportunities in data science, quantitative research, 
-                and roles where data drives strategic decision-making.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
-                    <span className="text-lg">📧</span>
-                  </div>
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <p className="text-slate-300">jp7238@nyu.edu</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
-                    <span className="text-lg">📱</span>
-                  </div>
-                  <div>
-                    <p className="font-medium">Phone</p>
-                    <p className="text-slate-300">+1(201)-423-0970</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
-                    <span className="text-lg">💼</span>
-                  </div>
-                  <div>
-                    <p className="font-medium">LinkedIn</p>
-                    <p className="text-slate-300">linkedin.com/in/jaylen-peng-92530527a</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white/5 p-8 rounded-xl border border-white/10">
-              <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-indigo-400 transition-colors duration-200"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-indigo-400 transition-colors duration-200"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
-                  <textarea
-                    rows="4"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-indigo-400 transition-colors duration-200 resize-none"
-                    placeholder="Your message..."
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors duration-200"
-                >
-                  Send Message
-                </button>
-              </form>
             </div>
           </motion.div>
         </div>
