@@ -452,14 +452,18 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-2">Quantitative Research Intern</h3>
               <p className="text-slate-300 mb-4">
-                ZADS Fund – Shenzhen, GD<br/>
-                February 2023 – April 2023
+                Engineered 16 high-frequency alpha factors using market microstructure data (Level-2/order book), 
+                inspired by academic literature and proprietary research. Built a machine learning pipeline 
+                integrating 10 low-correlation factors to predict T+1 stock returns.
               </p>
-              <ul className="list-disc list-inside text-slate-300 mb-4 space-y-1">
-                <li>Engineered 16 high-frequency alpha factors using market microstructure data (Level-2/order book), inspired by academic literature and proprietary research.</li>
-                <li>For each factor, calculated signal values, evaluated predictive power, and backtested performance using historical intraday data.</li>
-                <li>Built a machine learning pipeline integrating 10 low-correlation factors to predict T+1 stock returns, achieving an AUC of 0.62 on out-of-sample data.</li>
-              </ul>
+              <div className="mb-4">
+                <span className="text-indigo-300 font-medium">Achievement: 0.62 AUC on out-of-sample data</span>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Alpha Factors</span>
+                <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Machine Learning</span>
+                <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Backtesting</span>
+              </div>
               <a
                 href="https://github.com/JP-DS/Stock_alpha/tree/main"
                 target="_blank"
