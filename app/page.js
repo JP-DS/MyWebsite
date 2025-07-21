@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
@@ -8,13 +8,15 @@ export default function Home() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const yOffset = -96; // Adjust this value to match your navbar height
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'experience', 'projects'];
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'life'];
       const scrollPosition = window.scrollY + window.innerHeight / 3; // More accurate offset
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -35,43 +37,70 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Ref for diving video
+  const divingVideoRef = useRef(null);
+
+  useEffect(() => {
+    const video = divingVideoRef.current;
+    if (!video) return;
+    let observer;
+    if ('IntersectionObserver' in window) {
+      observer = new window.IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              video.muted = true;
+              video.loop = true;
+              video.play();
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+      observer.observe(video);
+    }
+    return () => {
+      if (observer && video) observer.unobserve(video);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black/20 backdrop-blur-md z-50 border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <motion.div
-              className="text-xl font-bold"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Jiaran (Jay)
-            </motion.div>
-            <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'skills', 'experience', 'projects'].map((section) => (
-                <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className={`capitalize transition-colors duration-200 hover:text-indigo-300 ${
-                    activeSection === section ? 'text-indigo-300' : 'text-gray-300'
-                  }`}
-                >
-                  {section}
-                </button>
-              ))}
-            </div>
+      <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-md shadow-lg border-b border-white/10">
+        <div className="max-w-7xl mx-auto flex items-center justify-between py-6 px-8">
+          <motion.div
+            className="text-2xl font-bold text-indigo-300 tracking-tight cursor-pointer"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Jiaran
+          </motion.div>
+          <div className="hidden md:flex space-x-10">
+            {['home', 'about', 'skills', 'experience', 'projects', 'life'].map((section) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className={`capitalize text-lg font-semibold px-3 py-2 rounded transition-colors duration-200 hover:text-indigo-300 ${
+                  activeSection === section ? 'text-indigo-300 underline underline-offset-8' : 'text-gray-100'
+                }`}
+              >
+                {section}
+              </button>
+            ))}
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-12">
+        <div className="w-full max-w-7xl mx-auto text-center">
+          <div className="flex flex-col lg:flex-row items-center gap-16 mb-12">
             <motion.div
-              className="flex-shrink-0"
+              className="flex-shrink-0 lg:order-1"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -79,36 +108,36 @@ export default function Home() {
               <img
                 src="/me.png"
                 alt="Jiaran (Jay) Peng"
-                className="w-48 h-48 rounded-full object-cover border-4 border-indigo-500/20 shadow-2xl"
+                className="w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-indigo-500/20 shadow-2xl"
               />
             </motion.div>
-            <div className="flex-1">
-              <motion.h1
-                className="text-4xl sm:text-6xl font-bold mb-6"
+            <div className="flex-1 lg:order-2 lg:text-center">
+        <motion.h1
+          className="text-4xl sm:text-6xl font-bold mb-6"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                Hi, I&apos;m <span className="text-indigo-400">Jiaran (Jay)</span>
-              </motion.h1>
-              <motion.p
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+                Hi, I&apos;m <span className="text-indigo-400">Jiaran (Jay)</span> 👋
+        </motion.h1>
+        <motion.p
                 className="text-xl sm:text-2xl text-slate-300 mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                Data Scientist & Quantitative Researcher
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+                Data-Driven Decision Making
               </motion.p>
               <motion.p
-                className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto"
+                className="text-lg text-slate-400 mb-8 max-w-xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 Passionate about leveraging data to drive strategic decisions and uncover insights 
                 that transform business outcomes.
-              </motion.p>
-            </div>
+        </motion.p>
+      </div>
           </div>
 
           <motion.div
@@ -131,7 +160,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.9 }}
           >
             <p className="text-slate-300 mb-2">Get in touch:</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
               <a href="mailto:jp7238@nyu.edu" className="text-indigo-300 hover:text-indigo-200 transition-colors duration-200">
                 jp7238@nyu.edu
               </a>
@@ -139,30 +168,32 @@ export default function Home() {
               <span className="text-slate-300">+1(201)-423-0970</span>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-              <a
-                href="https://www.linkedin.com/in/jaylen-peng-92530527a/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2 border border-white/20 hover:bg-white/10 rounded-lg transition-colors duration-200 text-center"
-              >
-                Connect on LinkedIn
-              </a>
-              <a
-                href="https://github.com/JP-DS"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2 border border-white/20 hover:bg-white/10 rounded-lg transition-colors duration-200 text-center"
-              >
-                View on GitHub
-              </a>
+              <div className="flex gap-4 justify-center w-full max-w-md mx-auto">
+                <a
+                  href="https://www.linkedin.com/in/jaylen-peng-92530527a/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 max-w-xs px-6 py-2 border border-white/20 hover:bg-white/10 rounded-lg transition-colors duration-200 text-center"
+                >
+                  Connect on LinkedIn
+                </a>
+                <a
+                  href="https://github.com/JP-DS"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 max-w-xs px-6 py-2 border border-white/20 hover:bg-white/10 rounded-lg transition-colors duration-200 text-center"
+                >
+                  View on GitHub
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Me Section */}
       <section id="about" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <motion.h2
             className="text-3xl sm:text-4xl font-bold text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -181,15 +212,15 @@ export default function Home() {
           >
             <div className="flex flex-col items-center md:items-start">
               <img
-                src="/me.png"
-                alt="Jiaran"
-                className="w-32 h-32 rounded-full border-4 border-indigo-500 shadow-lg mb-6 object-cover"
+                src="/moreMe/headshot.png"
+                alt="Jiaran headshot"
+                className="max-w-[180px] h-auto rounded-full border-4 border-indigo-500 shadow-lg mb-6"
               />
               <p className="text-lg text-slate-300 mb-6">
                 Hi, I&apos;m Jiaran — a data scientist with a Master&apos;s in Data Science from NYU. I&apos;m passionate about uncovering patterns, telling stories with code, and building tools that connect data to real-world decisions. Whether I&apos;m designing predictive models, analyzing user behavior, or crafting clean, intuitive interfaces, I love solving meaningful problems at the intersection of statistics, technology, and human experience.
               </p>
               <p className="text-lg text-slate-300 mb-6">
-                Outside of work, you&apos;ll find me exploring new cities, debugging side projects, planning my next solo adventure — or getting unreasonably excited about lifting a heavy weight.
+                Outside of work, you&apos;ll find me exploring new cities, planning my next solo adventure — or getting unreasonably excited about lifting a heavy weight.
               </p>
               <div className="flex flex-wrap gap-4">
                 <div className="bg-white/10 px-4 py-2 rounded-lg">
@@ -206,19 +237,19 @@ export default function Home() {
             <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 p-8 rounded-2xl border border-white/10">
               <h3 className="text-xl font-semibold mb-4">Education</h3>
               <div className="flex flex-col gap-4 text-slate-300">
-                <a href="https://www.nyu.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
+                <a href="https://www.nyu.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer text-center">
                   <img src="/School/nyu.png" alt="NYU Logo" className="w-12 h-12 mb-2 mx-auto object-contain" />
                   <h4 className="font-medium text-lg mb-1">New York University</h4>
                   <p className="text-sm">MS in Data Science | GPA: 3.9/4.0</p>
                   <p className="text-sm text-slate-400">2023 - 2025</p>
                 </a>
-                <a href="https://www.sustech.edu.cn/en/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
+                <a href="https://www.sustech.edu.cn/en/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer text-center">
                   <img src="/School/SUSTech.png" alt="SUSTech Logo" className="w-12 h-12 mb-2 mx-auto object-contain" />
                   <h4 className="font-medium text-lg mb-1">Southern University of Science and Technology</h4>
                   <p className="text-sm">BE in Computer Science | GPA: 3.8/4.0</p>
                   <p className="text-sm text-slate-400">2019 - 2023</p>
                 </a>
-                <a href="https://www.upenn.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer">
+                <a href="https://www.upenn.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer text-center">
                   <img src="/School/UPenn.png" alt="UPenn Logo" className="w-12 h-12 mb-2 mx-auto object-contain" />
                   <h4 className="font-medium text-lg mb-1">University of Pennsylvania</h4>
                   <p className="text-sm">Exchange Student | GPA: 3.7/4.0</p>
@@ -272,6 +303,18 @@ export default function Home() {
       {/* Experience Section */}
       <section id="experience" className="py-20 px-6 bg-black/20">
         <div className="max-w-6xl mx-auto">
+          <div className="mb-8 text-center">
+            <span className="inline-block bg-indigo-700/20 text-indigo-200 px-4 py-2 rounded-lg text-base">
+              💡 Many of the projects below have detailed code and results —
+              <button
+                onClick={() => scrollToSection('projects')}
+                className="ml-1 underline text-indigo-300 hover:text-indigo-200 transition-colors duration-200"
+              >
+                see the Project section for code
+              </button>
+              !
+            </span>
+          </div>
           <motion.h2
             className="text-3xl sm:text-4xl font-bold text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -288,27 +331,48 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            {/* Data Strategist Intern */}
-            <div className="bg-white/5 p-8 rounded-xl border border-white/10">
+            {/* Project Experience: Group Leader */}
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
-                  <h3 className="text-xl font-semibold text-indigo-300">Data Strategist Intern</h3>
-                  <p className="text-slate-300">Guotai Junan Securities</p>
+                  <h3 className="text-xl font-semibold text-indigo-300">Group Leader</h3>
+                  <p className="text-slate-300">Probability of Default Modeling – Applied ML in Finance Project</p>
+                  <p className="text-slate-400 text-sm">New York, NY</p>
                 </div>
-                <p className="text-slate-400 text-sm">June 2024 - August 2024</p>
+                <p className="text-slate-400 text-sm">October 2024 – December 2024</p>
               </div>
-              <ul className="space-y-2 text-slate-300">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Created a dynamic repo rate dashboard in Excel with real-time data updates, helping monitor rate changes
+              <ul className="space-y-2 text-slate-300 list-disc list-inside">
+                <li>
+                  Built an end-to-end probability of default prediction system using a 1M-row SME loan dataset: engineered 14 financial ratios, applied rule-based balance sheet imputation, quantile binning, and one-hot encoding.
                 </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Built a bond yield prediction pipeline using decision tree models, achieving 0.73 F1-score
+                <li>
+                  Developed a grouped ensemble of 9 LightGBM models, trained in a walk-forward fashion with false negative penalties and weighted predictions to account for class imbalance and credit risk.
                 </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Developed a stepwise regression model to estimate fund duration, reducing volatility by 25%
+                <li>
+                  Validated model performance on time-ordered out-of-sample test sets; used SHAP plots to interpret key features; achieved 0.875 AUC, outperforming the unsegmented logistic regression baseline (0.78 AUC).
+                </li>
+              </ul>
+            </div>
+
+            {/* Data Strategist Intern */}
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-indigo-300">Data Scientist Intern</h3>
+                  <p className="text-slate-300">Guotai Junan Securities</p>
+                  <p className="text-slate-400 text-sm">Shanghai</p>
+                </div>
+                <p className="text-slate-400 text-sm">June 2024 – August 2024</p>
+              </div>
+              <ul className="space-y-2 text-slate-300 list-disc list-inside">
+                <li>
+                  Built a bond yield prediction pipeline using decision tree models, achieving a 0.73 F1-score on test pricing data.
+                </li>
+                <li>
+                  Developed a stepwise regression model to estimate fund duration, reducing duration volatility by 25%.
+                </li>
+                <li>
+                  Created a real-time repo rate monitoring tool by integrating external data into Excel, enabling downstream modeling and improving fixed income strategy responsiveness.
                 </li>
               </ul>
             </div>
@@ -320,45 +384,43 @@ export default function Home() {
                   <h3 className="text-xl font-semibold text-indigo-300">Quantitative Research Intern</h3>
                   <p className="text-slate-300">ZADS Fund</p>
                 </div>
-                <p className="text-slate-400 text-sm">February 2023 - April 2023</p>
+                <p className="text-slate-400 text-sm">June 2023 - August 2023</p>
               </div>
               <ul className="space-y-2 text-slate-300">
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Developed 16 high-frequency stock alpha factors based on academic and industry research
+                  Engineered 16 high-frequency alpha factors using market microstructure data (Level-2/order book), inspired by academic literature and proprietary research.
                 </li>
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Designed an end-to-end system to fetch market data, compute weighted alpha scores, and train ML models
+                  For each factor, calculated signal values, evaluated predictive power, and backtested performance using historical intraday data.
                 </li>
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Used market microstructure data (level-2, order book) for evaluating trading signals
+                  Built a machine learning pipeline integrating 10 low-correlation factors to predict T+1 stock returns, achieving an AUC of 0.62 on out-of-sample data.
                 </li>
               </ul>
             </div>
 
-            {/* Data Analyst Intern */}
-            <div className="bg-white/5 p-8 rounded-xl border border-white/10">
+            {/* Data Scientist Intern: China Everbright Bank */}
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
-                  <h3 className="text-xl font-semibold text-indigo-300">Data Analyst Intern</h3>
+                  <h3 className="text-xl font-semibold text-indigo-300">Data Scientist Intern</h3>
                   <p className="text-slate-300">China Everbright Bank</p>
+                  <p className="text-slate-400 text-sm">Beijing</p>
                 </div>
-                <p className="text-slate-400 text-sm">June 2021 - August 2021</p>
+                <p className="text-slate-400 text-sm">June 2022 – August 2022</p>
               </div>
-              <ul className="space-y-2 text-slate-300">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Processed 200K+ customer records from 8 relational tables; used WOE and IV to reduce 700+ features to 50
+              <ul className="space-y-2 text-slate-300 list-disc list-inside">
+                <li>
+                  Processed 200K+ customer records from 8 relational tables and reduced dimensionality from 700+ to 50 features using WOE encoding and Information Value (IV) selection.
                 </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Built binary classification models (logistic regression, decision tree, random forest) to predict asset change
+                <li>
+                  Built and compared binary classification models (logistic regression, decision tree, random forest) to predict customer asset change; selected logistic regression for its interpretability and high AUC (0.85).
                 </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Delivered insights via dashboards that boosted conversion by 20% and cut acquisition costs by 12%
+                <li>
+                  Delivered model insights through dashboards, contributing to a 20% lift in conversion and 12% reduction in acquisition cost.
                 </li>
               </ul>
             </div>
@@ -499,11 +561,120 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Life Section */}
+      <section id="life" className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            className="text-3xl sm:text-4xl font-bold text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Beyond the Code
+          </motion.h2>
+          <motion.div
+            className="space-y-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {/* Weightlifting */}
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              <div className="flex-1">
+                <h3 className="text-2xl font-semibold mb-4">🏋️ Weightlifting</h3>
+                <p className="text-lg text-slate-300 mb-4">
+                  Passionate about strength training and pushing physical limits. Love the discipline and progress 
+                  that comes with consistent training. Whether it's powerlifting, progressive overload, or just 
+                  getting unreasonably excited about lifting heavy weights.
+                </p>
+                <p className="text-lg text-slate-300 mb-4">
+                  During my undergraduate years, I competed in a 15-event all-around fitness competition — 
+                  including powerlifting's big three (squat, bench press, deadlift), sprints, standing long jump, 
+                  endurance runs, and more. I won 9 individual events and took home the overall championship title.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-indigo-500/20 text-sm rounded">Powerlifting</span>
+                  <span className="px-3 py-1 bg-indigo-500/20 text-sm rounded">Progressive Overload</span>
+                  <span className="px-3 py-1 bg-indigo-500/20 text-sm rounded">Fitness Competition</span>
+                  <span className="px-3 py-1 bg-indigo-500/20 text-sm rounded">Championship Winner</span>
+                </div>
+              </div>
+              <div className="flex-1 flex justify-center">
+                <img
+                  src="/moreMe/medal.png"
+                  alt="Fitness Competition Medal"
+                  className="w-80 h-80 object-cover rounded-2xl border border-white/10 shadow-2xl"
+                />
+              </div>
+            </div>
+
+            {/* Solo Travel */}
+            <div className="flex flex-col lg:flex-row-reverse items-center gap-8">
+              <div className="flex-1">
+                <h3 className="text-2xl font-semibold mb-4">🚗 Solo Road Trip</h3>
+                <p className="text-lg text-slate-300 mb-4">
+                  Cross-country adventure, covering 4000 miles across 14 states, from New York City to San Diego, California. Learned to deal with the unexpected alone and to be ready to react and change plans as needed.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-indigo-500/20 text-sm rounded">Cross-Country</span>
+                  <span className="px-3 py-1 bg-indigo-500/20 text-sm rounded">4000 Miles</span>
+                  <span className="px-3 py-1 bg-indigo-500/20 text-sm rounded">14 States</span>
+                  <span className="px-3 py-1 bg-indigo-500/20 text-sm rounded">Solo Adventure</span>
+                </div>
+              </div>
+              <div className="flex-1 flex justify-center">
+                <img
+                  src="/moreMe/roadtrip.png"
+                  alt="Road Trip"
+                  className="w-80 h-80 object-cover rounded-2xl border border-white/10 shadow-2xl"
+                />
+              </div>
+            </div>
+
+            {/* Snowboarding & Surfing */}
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              <div className="w-full">
+                <h3 className="text-2xl font-semibold mb-6 text-center">🎯 So Many Things Else</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <div className="flex flex-col gap-2">
+                    <img
+                      src="/moreMe/surf.JPG"
+                      alt="Surfing"
+                      className="h-80 w-auto mx-auto object-contain rounded-xl border border-white/10 shadow-lg"
+                    />
+                    <img
+                      src="/moreMe/motor.JPG"
+                      alt="Motorcycle"
+                      className="h-96 w-auto mx-auto object-contain rounded-xl border border-white/10 shadow-lg"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <img
+                      src="/moreMe/snowboard.png"
+                      alt="Snowboarding"
+                      className="h-80 w-auto mx-auto object-contain rounded-xl border border-white/10 shadow-lg"
+                    />
+                    <video
+                      ref={divingVideoRef}
+                      src="/moreMe/diving.mov"
+                      controls
+                      className="h-96 w-auto mx-auto object-contain rounded-xl border border-white/10 shadow-lg bg-black"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-white/10">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-slate-400">
-            © 2024 Jiaran. Built with Next.js and Tailwind CSS.
+            © 2025 Jiaran. Built with Next.js and Tailwind CSS.
           </p>
         </div>
       </footer>
