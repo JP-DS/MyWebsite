@@ -250,10 +250,10 @@ export default function Home() {
                 className="max-w-[180px] h-auto rounded-full border-4 border-indigo-500 shadow-lg mb-6"
               />
               <p className="text-lg text-slate-300 mb-6">
-                Hi, I&apos;m Jiaran — a data scientist with a Master&apos;s in Data Science from NYU. I&apos;m passionate about uncovering patterns, telling stories with code, and building tools that connect data to real-world decisions. Whether I&apos;m designing predictive models, analyzing user behavior, or crafting clean, intuitive interfaces, I love solving meaningful problems at the intersection of statistics, technology, and human experience.
+                Hi, I&apos;m Jiaran — I hold a Master&apos;s in Data Science from NYU and am passionate about uncovering patterns, telling stories with code, and building tools that connect data to real-world decisions. Whether designing predictive models, analyzing behavior, or crafting intuitive interfaces, I love solving meaningful problems at the intersection of statistics, technology, and human experience.
               </p>
               <p className="text-lg text-slate-300 mb-6">
-                Outside of work, you&apos;ll find me exploring new cities, planning my next solo adventure — or getting unreasonably excited about lifting a heavy weight.
+                Outside of work, you&apos;ll find me exploring new cities and cultures, water diving, — or getting unreasonably excited about lifting a heavy weight.
               </p>
               <div className="flex flex-wrap gap-4">
                 <div className="bg-white/10 px-4 py-2 rounded-lg">
@@ -515,11 +515,10 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-2">Bond Yield Prediction</h3>
               <p className="text-slate-300 mb-4">
-                Built a bond yield prediction pipeline using decision tree models for Guotai Junan Securities, 
-                achieving 0.73 F1-score and developing stepwise regression models for fund duration estimation.
+                Built a bond yield prediction pipeline using decision tree models for Guotai Junan Securities, and developed stepwise regression models for fund duration estimation.
               </p>
               <div className="mb-4">
-                <span className="text-indigo-300 font-medium">Achievement: 25% volatility reduction</span>
+                <span className="text-indigo-300 font-medium">Achievement: 0.73 F1-score</span>
               </div>
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Decision Trees</span>
@@ -547,7 +546,7 @@ export default function Home() {
                 features to 50, building binary classification models to predict asset change.
               </p>
               <div className="mb-4">
-                <span className="text-indigo-300 font-medium">Achievement: 20% conversion boost, 12% cost reduction</span>
+                <span className="text-indigo-300 font-medium">Achievement: AUC 0.85, 20% conversion boost, 12% cost reduction</span>
               </div>
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Logistic Regression</span>
@@ -567,7 +566,7 @@ export default function Home() {
               <div className="w-full h-48 mb-4 flex items-center justify-center">
                 <img src="/covers/quant.png" alt="Quantitative Research Intern Cover" className="object-cover w-full h-full rounded-lg" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Quantitative Research Intern</h3>
+              <h3 className="text-xl font-semibold mb-2">Quantitative Investment</h3>
               <p className="text-slate-300 mb-4">
                 Engineered 16 high-frequency alpha factors using market microstructure data (Level-2/order book), 
                 inspired by academic literature and proprietary research. Built a machine learning pipeline 
