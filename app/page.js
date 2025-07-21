@@ -586,12 +586,12 @@ export default function Home() {
                 <h3 className="text-2xl font-semibold mb-4">🏋️ Weightlifting</h3>
                 <p className="text-lg text-slate-300 mb-4">
                   Passionate about strength training and pushing physical limits. Love the discipline and progress 
-                  that comes with consistent training. Whether it's powerlifting, progressive overload, or just 
+                  that comes with consistent training. Whether it&apos;s powerlifting, progressive overload, or just 
                   getting unreasonably excited about lifting heavy weights.
                 </p>
                 <p className="text-lg text-slate-300 mb-4">
                   During my undergraduate years, I competed in a 15-event all-around fitness competition — 
-                  including powerlifting's big three (squat, bench press, deadlift), sprints, standing long jump, 
+                  including powerlifting&apos;s big three (squat, bench press, deadlift), sprints, standing long jump, 
                   endurance runs, and more. I won 9 individual events and took home the overall championship title.
                 </p>
                 <div className="flex flex-wrap gap-2">
