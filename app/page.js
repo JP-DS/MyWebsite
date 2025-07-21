@@ -589,6 +589,31 @@ export default function Home() {
                 View Code
               </a>
             </div>
+            {/* Project Card: Statistical Analysis of Movie Ratings */}
+            <div className="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors duration-200">
+              <div className="w-full h-48 mb-4 flex items-center justify-center">
+                <img src="/covers/movie.png" alt="Statistical Analysis of Movie Ratings Cover" className="object-cover w-full h-full rounded-lg" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Statistical Analysis of Movie Ratings</h3>
+              <p className="text-slate-300 mb-4">
+                This data analysis project explores movie ratings from over 1,000 participants across 400 films. I used statistical testing to investigate patterns in preferences—like how gender or birth order might influence opinions on Shrek or The Lion King. I also built regression models using Ridge, LASSO, and Elastic Net to predict ratings based on viewer demographics.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Hypothesis Testing</span>
+                <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Regression</span>
+                <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Ridge</span>
+                <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">LASSO</span>
+                <span className="px-2 py-1 bg-indigo-500/20 text-xs rounded">Elastic Net</span>
+              </div>
+              <a
+                href="https://github.com/JP-DS/Statistical-Analysis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded text-sm transition-colors duration-200 inline-block mt-2"
+              >
+                View Code
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
