@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -79,6 +80,7 @@ export default function Home() {
           >
             Jiaran
           </motion.div>
+          {/* Desktop Nav */}
           <div className="hidden md:flex space-x-10">
             {['home', 'about', 'skills', 'experience', 'projects', 'life'].map((section) => (
               <button
@@ -92,6 +94,37 @@ export default function Home() {
               </button>
             ))}
           </div>
+          {/* Mobile Hamburger */}
+          <div className="md:hidden flex items-center">
+            <button
+              className="p-2 focus:outline-none"
+              aria-label="Open menu"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+            >
+              <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-indigo-200">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+          {/* Mobile Menu Dropdown */}
+          {mobileMenuOpen && (
+            <div className="absolute top-full left-0 w-full bg-black/90 z-50 flex flex-col items-center py-4 md:hidden animate-fade-in">
+              {['home', 'about', 'skills', 'experience', 'projects', 'life'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    scrollToSection(section);
+                  }}
+                  className={`capitalize text-lg font-semibold px-4 py-3 w-full text-center transition-colors duration-200 hover:text-indigo-300 ${
+                    activeSection === section ? 'text-indigo-300 underline underline-offset-8' : 'text-gray-100'
+                  }`}
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </nav>
 
