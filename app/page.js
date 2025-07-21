@@ -129,7 +129,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-6">
+      <section id="home" className="min-h-screen flex items-center justify-center px-6 mt-24 md:mt-0">
         <div className="w-full max-w-7xl mx-auto text-center">
           <div className="flex flex-col lg:flex-row items-center gap-16 mb-12">
             <motion.div
