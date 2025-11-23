@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'life'];
+      const sections = ['home', 'skills', 'about', 'projects', 'life'];
       const scrollPosition = window.scrollY + window.innerHeight / 3; // More accurate offset
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -82,7 +82,7 @@ export default function Home() {
           </motion.div>
           {/* Desktop Nav */}
           <div className="hidden md:flex space-x-10">
-            {['home', 'about', 'skills', 'experience', 'projects', 'life'].map((section) => (
+            {['home', 'skills', 'about', 'projects', 'life'].map((section) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
@@ -90,7 +90,7 @@ export default function Home() {
                   activeSection === section ? 'text-indigo-300 underline underline-offset-8' : 'text-gray-100'
                 }`}
               >
-                {section}
+                {section === 'about' ? 'Experience' : section}
               </button>
             ))}
           </div>
@@ -109,7 +109,7 @@ export default function Home() {
           {/* Mobile Menu Dropdown */}
           {mobileMenuOpen && (
             <div className="absolute top-full left-0 w-full bg-black/90 z-50 flex flex-col items-center py-4 md:hidden animate-fade-in">
-              {['home', 'about', 'skills', 'experience', 'projects', 'life'].map((section) => (
+              {['home', 'skills', 'about', 'projects', 'life'].map((section) => (
                 <button
                   key={section}
                   onClick={() => {
@@ -120,7 +120,7 @@ export default function Home() {
                     activeSection === section ? 'text-indigo-300 underline underline-offset-8' : 'text-gray-100'
                   }`}
                 >
-                  {section}
+                  {section === 'about' ? 'Experience' : section}
                 </button>
               ))}
             </div>
@@ -162,35 +162,28 @@ export default function Home() {
                 Data-Driven Decision Making
               </motion.p>
               <motion.p
-                className="text-lg text-slate-400 mb-8 max-w-xl mx-auto"
+                className="text-lg text-slate-400 mb-4 max-w-2xl mx-auto text-left"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Passionate about leveraging data to drive strategic decisions and uncover insights 
-                that transform business outcomes.
-        </motion.p>
+                I hold a Master&apos;s in Data Science from NYU and am passionate about uncovering patterns, telling stories with code, and building tools that connect data to real-world decisions. Whether designing predictive models, analyzing behavior, or crafting intuitive interfaces, I love solving meaningful problems at the intersection of statistics, technology, and human experience.
+              </motion.p>
+              <motion.p
+                className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto text-left"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                Outside of work, you&apos;ll find me exploring new cities and cultures, water diving, — or getting unreasonably excited about lifting a heavy weight.
+              </motion.p>
       </div>
           </div>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors duration-200"
-            >
-              View My Work
-            </button>
-          </motion.div>
           <motion.div
             className="mt-8 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
           >
             <p className="text-slate-300 mb-2">Get in touch:</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
@@ -224,7 +217,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Me Section */}
+      {/* About & Experience Section - Combined */}
       <section id="about" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.h2
@@ -234,61 +227,202 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            About Me
+            Experience
           </motion.h2>
+          
+          {/* Education Section */}
           <motion.div
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="max-w-4xl mx-auto mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="flex flex-col items-center md:items-start">
-              <img
-                src="/moreMe/headshot.png"
-                alt="Jiaran headshot"
-                className="max-w-[180px] h-auto rounded-full border-4 border-indigo-500 shadow-lg mb-6"
-              />
-              <p className="text-lg text-slate-300 mb-6">
-                Hi, I&apos;m Jiaran — I hold a Master&apos;s in Data Science from NYU and am passionate about uncovering patterns, telling stories with code, and building tools that connect data to real-world decisions. Whether designing predictive models, analyzing behavior, or crafting intuitive interfaces, I love solving meaningful problems at the intersection of statistics, technology, and human experience.
-              </p>
-              <p className="text-lg text-slate-300 mb-6">
-                Outside of work, you&apos;ll find me exploring new cities and cultures, water diving, — or getting unreasonably excited about lifting a heavy weight.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="bg-white/10 px-4 py-2 rounded-lg">
-                  <span className="text-sm text-slate-300">Data Science</span>
-                </div>
-                <div className="bg-white/10 px-4 py-2 rounded-lg">
-                  <span className="text-sm text-slate-300">Machine Learning</span>
-                </div>
-                <div className="bg-white/10 px-4 py-2 rounded-lg">
-                  <span className="text-sm text-slate-300">Financial Modeling</span>
-                </div>
-              </div>
+            <h3 className="text-2xl font-semibold text-center mb-8">Education</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <a href="https://www.nyu.edu/" target="_blank" rel="noopener noreferrer" className="block bg-white/5 hover:bg-indigo-500/10 transition-colors duration-200 rounded-xl p-6 border border-white/10 shadow cursor-pointer text-center">
+                <img src="/School/nyu.png" alt="NYU Logo" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <h4 className="font-medium text-lg mb-2 text-slate-200">New York University</h4>
+                <p className="text-sm text-slate-300">MS in Data Science</p>
+                <p className="text-sm text-slate-300">GPA: 3.9/4.0</p>
+                <p className="text-sm text-slate-400 mt-2">2023 - 2025</p>
+              </a>
+              <a href="https://www.sustech.edu.cn/en/" target="_blank" rel="noopener noreferrer" className="block bg-white/5 hover:bg-indigo-500/10 transition-colors duration-200 rounded-xl p-6 border border-white/10 shadow cursor-pointer text-center">
+                <img src="/School/SUSTech.png" alt="SUSTech Logo" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <h4 className="font-medium text-lg mb-2 text-slate-200">Southern University of Science and Technology</h4>
+                <p className="text-sm text-slate-300">BE in Computer Science</p>
+                <p className="text-sm text-slate-300">GPA: 3.8/4.0</p>
+                <p className="text-sm text-slate-400 mt-2">2019 - 2023</p>
+              </a>
+              <a href="https://www.upenn.edu/" target="_blank" rel="noopener noreferrer" className="block bg-white/5 hover:bg-indigo-500/10 transition-colors duration-200 rounded-xl p-6 border border-white/10 shadow cursor-pointer text-center">
+                <img src="/School/UPenn.png" alt="UPenn Logo" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <h4 className="font-medium text-lg mb-2 text-slate-200">University of Pennsylvania</h4>
+                <p className="text-sm text-slate-300">Exchange Student</p>
+                <p className="text-sm text-slate-300">GPA: 3.7/4.0</p>
+                <p className="text-sm text-slate-400 mt-2">2022</p>
+              </a>
             </div>
-            <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 p-8 rounded-2xl border border-white/10">
-              <h3 className="text-xl font-semibold mb-4">Education</h3>
-              <div className="flex flex-col gap-4 text-slate-300">
-                <a href="https://www.nyu.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer text-center">
-                  <img src="/School/nyu.png" alt="NYU Logo" className="w-12 h-12 mb-2 mx-auto object-contain" />
-                  <h4 className="font-medium text-lg mb-1">New York University</h4>
-                  <p className="text-sm">MS in Data Science | GPA: 3.9/4.0</p>
-                  <p className="text-sm text-slate-400">2023 - 2025</p>
-                </a>
-                <a href="https://www.sustech.edu.cn/en/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer text-center">
-                  <img src="/School/SUSTech.png" alt="SUSTech Logo" className="w-12 h-12 mb-2 mx-auto object-contain" />
-                  <h4 className="font-medium text-lg mb-1">Southern University of Science and Technology</h4>
-                  <p className="text-sm">BE in Computer Science | GPA: 3.8/4.0</p>
-                  <p className="text-sm text-slate-400">2019 - 2023</p>
-                </a>
-                <a href="https://www.upenn.edu/" target="_blank" rel="noopener noreferrer" className="block w-full bg-white/10 hover:bg-indigo-500/20 transition-colors duration-200 rounded-xl p-4 border border-white/10 shadow cursor-pointer text-center">
-                  <img src="/School/UPenn.png" alt="UPenn Logo" className="w-12 h-12 mb-2 mx-auto object-contain" />
-                  <h4 className="font-medium text-lg mb-1">University of Pennsylvania</h4>
-                  <p className="text-sm">Exchange Student | GPA: 3.7/4.0</p>
-                  <p className="text-sm text-slate-400">2022</p>
-                </a>
+          </motion.div>
+
+          {/* Professional Experience Content */}
+          <div className="mb-8 text-center">
+            <span className="inline-block bg-indigo-700/20 text-indigo-200 px-4 py-2 rounded-lg text-base">
+              💡 Many of the projects below have detailed code and results —
+              <button
+                onClick={() => scrollToSection('projects')}
+                className="ml-1 underline text-indigo-300 hover:text-indigo-200 transition-colors duration-200"
+              >
+                see the Project section for code
+              </button>
+              !
+            </span>
+          </div>
+          
+          <motion.h3
+            className="text-2xl sm:text-3xl font-bold text-center mb-8 mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Professional Experience
+          </motion.h3>
+          
+          <motion.div
+            className="space-y-8 max-w-6xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {/* Data Scientist, Product Analytics Intern - ETH Tech */}
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-indigo-300">Data Scientist, Product Analytics Intern</h3>
+                  <p className="text-slate-300">ETH Tech</p>
+                  <p className="text-slate-400 text-sm">New York, NY</p>
+                </div>
+                <p className="text-slate-400 text-sm">July 2025 – September 2025</p>
               </div>
+              <ul className="space-y-2 text-slate-300">
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Integrated and analyzed 1M+ e-commerce sessions to identify checkout frictions driving a 70% cart abandonment rate; performed segmentation and cohort analyses to identify high-intent users and key drop-off points.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Designed and developed a personalized notification feature, collaborating with design and engineering; ran A/B tests on copy, timing, and CTAs, boosting CTR by 25% and cart-to-purchase conversions by 15%.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Delivered Dash/Plotly dashboards and insights in client-ready format, enabling data-driven product decisions.
+                </li>
+              </ul>
+            </div>
+
+            {/* Project Experience: Group Leader */}
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-indigo-300">Group Leader</h3>
+                  <p className="text-slate-300">Probability of Default Modeling – Applied ML in Finance Project</p>
+                  <p className="text-slate-400 text-sm">New York, NY</p>
+                </div>
+                <p className="text-slate-400 text-sm">October 2024 – December 2024</p>
+              </div>
+              <ul className="space-y-2 text-slate-300">
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Built an end-to-end probability of default prediction system using a 1M-row SME loan dataset: engineered 14 financial ratios, applied rule-based balance sheet imputation, quantile binning, and one-hot encoding.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Developed a grouped ensemble of 9 LightGBM models, trained in a walk-forward fashion with false negative penalties and weighted predictions to account for class imbalance and credit risk.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Validated model performance on time-ordered out-of-sample test sets; used SHAP plots to interpret key features; achieved 0.875 AUC, outperforming the unsegmented logistic regression baseline (0.78 AUC).
+                </li>
+              </ul>
+            </div>
+
+            {/* Data Strategist Intern */}
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-indigo-300">Data Scientist Intern</h3>
+                  <p className="text-slate-300">Guotai Junan Securities</p>
+                  <p className="text-slate-400 text-sm">Shanghai, China</p>
+                </div>
+                <p className="text-slate-400 text-sm">June 2024 – August 2024</p>
+              </div>
+              <ul className="space-y-2 text-slate-300">
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Built a bond yield prediction pipeline using decision tree models, achieving a 0.73 F1-score on test pricing data.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Developed a stepwise regression model to estimate fund duration, reducing duration volatility by 25%.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Created a real-time repo rate monitoring tool by integrating external data into Excel, enabling downstream modeling and improving fixed income strategy responsiveness.
+                </li>
+              </ul>
+            </div>
+
+            {/* Quantitative Research Intern */}
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-indigo-300">Quantitative Research Intern</h3>
+                  <p className="text-slate-300">ZADS Fund</p>
+                  <p className="text-slate-400 text-sm">Shenzhen, China</p>
+                </div>
+                <p className="text-slate-400 text-sm">February 2023 - April 2023</p>
+              </div>
+              <ul className="space-y-2 text-slate-300">
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Engineered 16 high-frequency alpha factors using market microstructure data (Level-2/order book), inspired by academic literature and proprietary research.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  For each factor, calculated signal values, evaluated predictive power, and backtested performance using historical intraday data.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Built a machine learning pipeline integrating 10 low-correlation factors to predict T+1 stock returns, achieving an AUC of 0.62 on out-of-sample data.
+                </li>
+              </ul>
+            </div>
+
+            {/* Data Scientist Intern: China Everbright Bank */}
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-indigo-300">Data Scientist Intern</h3>
+                  <p className="text-slate-300">China Everbright Bank</p>
+                  <p className="text-slate-400 text-sm">Beijing, China</p>
+                </div>
+                <p className="text-slate-400 text-sm">June 2022 – August 2022</p>
+              </div>
+              <ul className="space-y-2 text-slate-300">
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Processed 200K+ customer records from 8 relational tables and reduced dimensionality from 700+ to 50 features using WOE encoding and Information Value (IV) selection.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Built and compared binary classification models (logistic regression, decision tree, random forest) to predict customer asset change; selected logistic regression for its interpretability and high AUC (0.85).
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  Delivered model insights through dashboards, contributing to a 20% lift in conversion and 12% reduction in acquisition cost.
+                </li>
+              </ul>
             </div>
           </motion.div>
         </div>
@@ -314,153 +448,24 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Analytics & Business Intelligence</h3>
+              <p className="text-slate-300">A/B Testing, Exploratory Data Analysis, Segmentation & Cohort Analysis, Funnel Analysis, Business Metrics, Behavioral Analysis, Causal Inference, Decision Modeling, Data Visualization (Tableau, Power BI)</p>
+            </div>
+            <div className="mb-6">
               <h3 className="text-xl font-semibold text-indigo-300 mb-2">Programming</h3>
-              <p className="text-slate-300">Python (NumPy, Pandas, Scikit-learn, LightGBM), SQL, R</p>
+              <p className="text-slate-300">Python (Pandas, NumPy, Scikit-learn, Dash, Plotly), SQL, R</p>
             </div>
             <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Statistics</h3>
-              <p className="text-slate-300">Regression Analysis, Hypothesis Testing, Time Series Forecasting, A/B Testing</p>
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Data Engineering & Infrastructure</h3>
+              <p className="text-slate-300">ETL & Data Integration, Data Cleaning & Reconciliation, Distributed Computing (Spark, Hadoop), Cloud Platforms (AWS), Version Control (Git)</p>
             </div>
             <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Machine Learning</h3>
-              <p className="text-slate-300">Classification, Regression, Clustering, PCA, Ensemble Methods, CNN, RNN</p>
-            </div>
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Other Tools</h3>
-              <p className="text-slate-300">Hadoop, Spark, AWS, Tableau, Power BI, JIRA, Git</p>
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Machine Learning & AI</h3>
+              <p className="text-slate-300">Predictive Modeling, Regression & Classification, Time Series Forecasting, Feature Engineering, Ensemble Methods (XGBoost, LightGBM, CatBoost), NLP & LLMs, Explainable AI (SHAP, LIME), Model Validation</p>
             </div>
           </motion.div>
         </div>
       </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-6 bg-black/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-8 text-center">
-            <span className="inline-block bg-indigo-700/20 text-indigo-200 px-4 py-2 rounded-lg text-base">
-              💡 Many of the projects below have detailed code and results —
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="ml-1 underline text-indigo-300 hover:text-indigo-200 transition-colors duration-200"
-              >
-                see the Project section for code
-              </button>
-              !
-            </span>
-          </div>
-          <motion.h2
-            className="text-3xl sm:text-4xl font-bold text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Professional Experience
-          </motion.h2>
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {/* Project Experience: Group Leader */}
-            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-indigo-300">Group Leader</h3>
-                  <p className="text-slate-300">Probability of Default Modeling – Applied ML in Finance Project</p>
-                  <p className="text-slate-400 text-sm">New York, NY</p>
-                </div>
-                <p className="text-slate-400 text-sm">October 2024 – December 2024</p>
-              </div>
-              <ul className="space-y-2 text-slate-300 list-disc list-inside">
-                <li>
-                  Built an end-to-end probability of default prediction system using a 1M-row SME loan dataset: engineered 14 financial ratios, applied rule-based balance sheet imputation, quantile binning, and one-hot encoding.
-                </li>
-                <li>
-                  Developed a grouped ensemble of 9 LightGBM models, trained in a walk-forward fashion with false negative penalties and weighted predictions to account for class imbalance and credit risk.
-                </li>
-                <li>
-                  Validated model performance on time-ordered out-of-sample test sets; used SHAP plots to interpret key features; achieved 0.875 AUC, outperforming the unsegmented logistic regression baseline (0.78 AUC).
-                </li>
-              </ul>
-            </div>
-
-            {/* Data Strategist Intern */}
-            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-indigo-300">Data Scientist Intern</h3>
-                  <p className="text-slate-300">Guotai Junan Securities</p>
-                  <p className="text-slate-400 text-sm">Shanghai</p>
-                </div>
-                <p className="text-slate-400 text-sm">June 2024 – August 2024</p>
-              </div>
-              <ul className="space-y-2 text-slate-300 list-disc list-inside">
-                <li>
-                  Built a bond yield prediction pipeline using decision tree models, achieving a 0.73 F1-score on test pricing data.
-                </li>
-                <li>
-                  Developed a stepwise regression model to estimate fund duration, reducing duration volatility by 25%.
-                </li>
-                <li>
-                  Created a real-time repo rate monitoring tool by integrating external data into Excel, enabling downstream modeling and improving fixed income strategy responsiveness.
-                </li>
-              </ul>
-            </div>
-
-            {/* Quantitative Research Intern */}
-            <div className="bg-white/5 p-8 rounded-xl border border-white/10">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-indigo-300">Quantitative Research Intern</h3>
-                  <p className="text-slate-300">ZADS Fund</p>
-                </div>
-                <p className="text-slate-400 text-sm">June 2023 - August 2023</p>
-              </div>
-              <ul className="space-y-2 text-slate-300">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Engineered 16 high-frequency alpha factors using market microstructure data (Level-2/order book), inspired by academic literature and proprietary research.
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  For each factor, calculated signal values, evaluated predictive power, and backtested performance using historical intraday data.
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-indigo-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                  Built a machine learning pipeline integrating 10 low-correlation factors to predict T+1 stock returns, achieving an AUC of 0.62 on out-of-sample data.
-                </li>
-              </ul>
-            </div>
-
-            {/* Data Scientist Intern: China Everbright Bank */}
-            <div className="bg-white/5 p-8 rounded-xl border border-white/10 mb-8">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-indigo-300">Data Scientist Intern</h3>
-                  <p className="text-slate-300">China Everbright Bank</p>
-                  <p className="text-slate-400 text-sm">Beijing</p>
-                </div>
-                <p className="text-slate-400 text-sm">June 2022 – August 2022</p>
-              </div>
-              <ul className="space-y-2 text-slate-300 list-disc list-inside">
-                <li>
-                  Processed 200K+ customer records from 8 relational tables and reduced dimensionality from 700+ to 50 features using WOE encoding and Information Value (IV) selection.
-                </li>
-                <li>
-                  Built and compared binary classification models (logistic regression, decision tree, random forest) to predict customer asset change; selected logistic regression for its interpretability and high AUC (0.85).
-                </li>
-                <li>
-                  Delivered model insights through dashboards, contributing to a 20% lift in conversion and 12% reduction in acquisition cost.
-                </li>
-              </ul>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Projects Section */}
       <section id="projects" className="py-20 px-6 bg-black/20">
         <div className="max-w-6xl mx-auto">
