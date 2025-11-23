@@ -217,6 +217,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            className="text-3xl sm:text-4xl font-bold text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Skills
+          </motion.h2>
+          <motion.div
+            className="bg-white/5 p-8 rounded-xl border border-white/10 shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Analytics & Business Intelligence</h3>
+              <p className="text-slate-300">A/B Testing, Exploratory Data Analysis, Segmentation & Cohort Analysis, Funnel Analysis, Business Metrics, Behavioral Analysis, Causal Inference, Decision Modeling, Data Visualization (Tableau, Power BI)</p>
+            </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Programming</h3>
+              <p className="text-slate-300">Python (Pandas, NumPy, Scikit-learn, Dash, Plotly), SQL, R</p>
+            </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Data Engineering & Infrastructure</h3>
+              <p className="text-slate-300">ETL & Data Integration, Data Cleaning & Reconciliation, Distributed Computing (Spark, Hadoop), Cloud Platforms (AWS), Version Control (Git)</p>
+            </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Machine Learning & AI</h3>
+              <p className="text-slate-300">Predictive Modeling, Regression & Classification, Time Series Forecasting, Feature Engineering, Ensemble Methods (XGBoost, LightGBM, CatBoost), NLP & LLMs, Explainable AI (SHAP, LIME), Model Validation</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* About & Experience Section - Combined */}
       <section id="about" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
@@ -428,44 +467,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            className="text-3xl sm:text-4xl font-bold text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Skills
-          </motion.h2>
-          <motion.div
-            className="bg-white/5 p-8 rounded-xl border border-white/10 shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Analytics & Business Intelligence</h3>
-              <p className="text-slate-300">A/B Testing, Exploratory Data Analysis, Segmentation & Cohort Analysis, Funnel Analysis, Business Metrics, Behavioral Analysis, Causal Inference, Decision Modeling, Data Visualization (Tableau, Power BI)</p>
-            </div>
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Programming</h3>
-              <p className="text-slate-300">Python (Pandas, NumPy, Scikit-learn, Dash, Plotly), SQL, R</p>
-            </div>
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Data Engineering & Infrastructure</h3>
-              <p className="text-slate-300">ETL & Data Integration, Data Cleaning & Reconciliation, Distributed Computing (Spark, Hadoop), Cloud Platforms (AWS), Version Control (Git)</p>
-            </div>
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-indigo-300 mb-2">Machine Learning & AI</h3>
-              <p className="text-slate-300">Predictive Modeling, Regression & Classification, Time Series Forecasting, Feature Engineering, Ensemble Methods (XGBoost, LightGBM, CatBoost), NLP & LLMs, Explainable AI (SHAP, LIME), Model Validation</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
       {/* Projects Section */}
       <section id="projects" className="py-20 px-6 bg-black/20">
         <div className="max-w-6xl mx-auto">
